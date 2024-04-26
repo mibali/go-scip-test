@@ -1,0 +1,21 @@
+on:
+  - push
+ 
+jobs:
+  scip-go:
+    # this line will prevent forks of this repo from uploading lsif indexes
+    if: github.repository == 'go-scip-test'
+    runs-on: ubuntu-latest
+    container: sourcegraph/scip-go:latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Generate SCIP data
+        run: scip-go
+      - name: Install src CLI
+        run: |
+          curl -L https://sourcegraph.com/.api/src-cli/src_linux_amd64 -o /usr/local/bin/src
+          chmod +x /usr/local/bin/src
+      - name: Upload SCIP data
+        # this will upload to Sourcegraph.com, you may need to substitute a different command.
+        # by default, we ignore failures to avoid disrupting CI pipelines with non-critical errors.
+        run: src code-intel upload -github-token=${{ secrets.GITHUB_TOKEN }} -ignore-upload-failure
