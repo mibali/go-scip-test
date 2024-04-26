@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	// Taking input num
+	// Taking input numb
 	var num1, num2 int
 	fmt.Print("Enter first number: ")
 	fmt.Scanln(&num1)
