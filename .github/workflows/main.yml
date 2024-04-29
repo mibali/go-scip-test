@@ -18,4 +18,5 @@ jobs:
       - name: Upload SCIP data
         # this will upload to Sourcegraph.com, you may need to substitute a different command.
         # by default, we ignore failures to avoid disrupting CI pipelines with non-critical errors.
-        run: src code-intel upload -github-token=${{ secrets.SCIP_TOKEN }} -ignore-upload-failure
+        run: src code-intel upload -github-token=${{ secrets.SCIP_TOKEN }} -ignore-upload-failure -repo=mibali/go-scip-test
+
