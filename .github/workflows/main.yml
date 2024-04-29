@@ -4,7 +4,7 @@ on:
 jobs:
   scip-go:
     # this line will prevent forks of this repo from uploading lsif indexes
-    if: github.repository == 'go-scip-test'
+    if: github.repository == 'https://github.com/mibali/go-scip-test/'
     runs-on: ubuntu-latest
     container: sourcegraph/scip-go:latest
     steps:
